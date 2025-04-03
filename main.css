@@ -25,3 +25,8 @@ footer {
     font-family: Arial;
     margin: 0px;
 }
+
+a: :hover {
+    color: red;
+    text-decoration: underline;
+}
