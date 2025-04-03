@@ -10,13 +10,14 @@ main {
     color: rgb(107, 80, 11);
     font-family: Arial;
     margin: 0px;
+    margin: 10px 10px 45px;
 }
 
 header {
     background-color: pink;
     color: rgb(227, 84, 132);
     font-family: Arial;
-    margin: 0px 0px 45px;
+    margin: 0px;
 
 }
 
