@@ -26,7 +26,12 @@ footer {
     margin: 0px;
 }
 
-a: :hover {
+a {
+    color: rgb(171, 105, 171)
+    text-decoration: none;
+}
+
+a:hover {
     color: red;
     text-decoration: underline;
 }
