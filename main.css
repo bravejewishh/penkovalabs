@@ -26,12 +26,22 @@ footer {
     margin: 0px;
 }
 
-a {
+a:link {
     color: rgb(171, 105, 171);
     text-decoration: none;
+}
+
+a:visited {
+    color: purple;
+    text-decoration: navajowhite;
 }
 
 a:hover {
     color: red;
     text-decoration: underline;
+}
+
+a:active {
+    color: black;
+    opacity: 0.3;
 }
