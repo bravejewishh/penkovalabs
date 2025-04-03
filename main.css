@@ -26,6 +26,12 @@ footer {
     margin: 0px;
 }
 
+a {
+    color: rgb(223, 124, 197);
+    text-decoration: none;
+    transition: 1s 2s;
+}
+
 a:link {
     color: rgb(171, 105, 171);
     text-decoration: none;
@@ -33,12 +39,13 @@ a:link {
 
 a:visited {
     color: purple;
-    text-decoration: navajowhite;
+    text-decoration: none;
 }
 
 a:hover {
     color: red;
     text-decoration: underline;
+    transition: 0.3s;
 }
 
 a:active {
