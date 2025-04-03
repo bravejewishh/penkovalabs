@@ -16,7 +16,8 @@ header {
     background-color: pink;
     color: rgb(227, 84, 132);
     font-family: Arial;
-    margin: 0px;
+    margin: 0px 0px 45px;
+
 }
 
 footer {
@@ -24,6 +25,11 @@ footer {
     color: rgb(227, 84, 132);
     font-family: Arial;
     margin: 0px;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 a {
