@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. position</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            div {
+                width: 300px;
+                height: 70px;
+                line-height: 70px;
+                text-align: center;
+                background-color: white;
+                border: 1px dotted darkgreen;
+                margin: 15px;
+                
+            }
+            .static {
+                position: relative;
+                z-index: 1;
+            }
+            .position-relative {
+                position: relative;
+                left: 150px;
+                top: -130px;
+                z-index: 0;
+            }
+            .position-relative:hover {
+                position: relative;
+                z-index: 2;
+            }
+           
+
+        </style>
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 4
+            <hr>
+        </header>
+
+        <main>
+           <div class="static">static</div>
+           <div class="static">static</div>
+           <div class="position-relative">relative</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+           <div>static</div>
+        </main>
+
+        <footer> 
+            <hr>
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
