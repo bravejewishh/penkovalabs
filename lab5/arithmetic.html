@@ -17,6 +17,26 @@
                 alert('сумма ' + a + ' и ' + b + ' равна ' + result);
             }
 
+            function showdiff() {
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a - b;
+                alert('разность ' + a + ' и ' + b + ' равна ' + result);
+            }
+
+            function showprod() {
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a * b;
+                alert('произведение ' + a + ' и ' + b + ' равно ' + result);
+            }
+
             function showAuthor() {
                 let author = 'автор страницы:\nПенькова Полина Александровна'
                 alert(author)
@@ -55,6 +75,8 @@
             <label>первое число: <input type="number" id="numberA"> </label><br>
             <label>второе число: <input type="number" id="numberB"></label><br>
             <div class="message" onclick="showSum()">найти сумму чисел</div>
+            <div class="message" onclick="showdiff()">найти разность чисел</div>
+            <div class="message" onclick="showprod()">найти произведение чисел</div>
             <div class="message" onclick="showAuthor()">узнать, кто автор страницы</div>
         </main>
 
