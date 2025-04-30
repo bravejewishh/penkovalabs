@@ -37,6 +37,49 @@
                 alert('произведение ' + a + ' и ' + b + ' равно ' + result);
             }
 
+            function showdiv() {
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                if(b == 0) {
+                    alert('на ноль делить нельзя!');
+                    inputB.focus();
+                    inputB.select();
+                    inputB.style.color = 'red';
+                    inputB.style.borderColor = 'red';
+                    return;
+                }
+
+                if (isNaN(a)) {
+                    alert('введите числовое значение в первое поле');
+                    inputA.focus();
+                    inputA.select();
+                    inputA.style.color = 'red';
+                    inputA.style.borderColor = 'red';
+                    return;
+                }
+
+                if (isNaN(b)) {
+                    alert('введите числовое значение во второе поле');
+                    inputB.focus();
+                    inputB.select();
+                    inputB.style.color = 'red';
+                    inputB.style.borderColor = 'red';
+                    return;
+                }
+
+                inputB.style.color = '';
+                inputB.style.borderColor = '';
+
+                inputA.style.color = '';
+                inputA.style.borderColor = '';
+
+                let result = a/b;
+                alert('деление ' + a + ' и ' + b + ' равно ' + result);
+            }
+
             function showAuthor() {
                 let author = 'автор страницы:\nПенькова Полина Александровна'
                 alert(author)
@@ -77,6 +120,7 @@
             <div class="message" onclick="showSum()">найти сумму чисел</div>
             <div class="message" onclick="showdiff()">найти разность чисел</div>
             <div class="message" onclick="showprod()">найти произведение чисел</div>
+            <div class="message" onclick="showdiv()">найти отношение чисел</div>
             <div class="message" onclick="showAuthor()">узнать, кто автор страницы</div>
         </main>
 
