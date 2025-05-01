@@ -80,6 +80,41 @@
                 alert('деление ' + a + ' и ' + b + ' равно ' + result);
             }
 
+            function showdeg() {
+                let inputA = document.getElementById('numberA');
+                let inputB = document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+
+                if (isNaN(a)) {
+                    alert('введите числовое значение в первое поле');
+                    inputA.focus();
+                    inputA.select();
+                    inputA.style.color = 'red';
+                    inputA.style.borderColor = 'red';
+                    return;
+                }
+
+                if (isNaN(b)) {
+                    alert('введите числовое значение во второе поле');
+                    inputB.focus();
+                    inputB.select();
+                    inputB.style.color = 'red';
+                    inputB.style.borderColor = 'red';
+                    return;
+                }
+
+                inputB.style.color = '';
+                inputB.style.borderColor = '';
+
+                inputA.style.color = '';
+                inputA.style.borderColor = '';
+
+                let result = Math.pow(a,b);
+                alert('возведение в степень ' + a + ' и ' + b + ' равно ' + result);
+            }
+
             function showAuthor() {
                 let author = 'автор страницы:\nПенькова Полина Александровна'
                 alert(author)
@@ -88,6 +123,13 @@
                 let foot = 'добро пожаловать на страницу!'
                 let foote = '\nтот может, кто думает, что может'
                 alert(foot + foote)
+            }
+
+            function changeoutput(buttonNum, backColor, textColor) {
+                let output = document.getElementById('output');
+                output.innerHTML = 'нажата кнопка ' + buttonNum;
+                output.style.backgroundColor = backColor;
+                output.style.color = textColor;
             }
         </script>
         
@@ -106,6 +148,12 @@
             header, footer {
                 cursor: pointer;
             }
+
+            #output {
+                border: 1px solid;
+                width: 300px;
+                height: 40px;
+            }
         </style>
      </head>
 
@@ -117,11 +165,23 @@
         <main>
             <label>первое число: <input type="number" id="numberA"> </label><br>
             <label>второе число: <input type="number" id="numberB"></label><br>
+
             <div class="message" onclick="showSum()">найти сумму чисел</div>
             <div class="message" onclick="showdiff()">найти разность чисел</div>
             <div class="message" onclick="showprod()">найти произведение чисел</div>
             <div class="message" onclick="showdiv()">найти отношение чисел</div>
+            <div class="message" onclick="showdeg()">возвести в степень</div>
+
             <div class="message" onclick="showAuthor()">узнать, кто автор страницы</div>
+
+            <div>
+                <input type="button" value="кнопка 1" onclick="changeoutput(1, 'purple', 'yellow')">
+                <input type="button" value="кнопка 2" onclick="changeoutput(2, 'pink', 'white')">
+                <input type="button" value="кнопка 3" onclick="changeoutput(3, 'orange', 'blue')">
+                <input type="button" value="кнопка 4" onclick="changeoutput(4, 'brown', 'white')">
+            </div>
+
+            <div id="output"></div>
         </main>
 
         <footer ondblclick="showfoot()"> 
