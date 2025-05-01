@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+
+        <style>
+            .cart-container {
+                border: 2px solid #824caf;
+                border-radius: 10px;
+                padding: 20px;
+                max-width: 500px;
+                margin: 20px auto;
+                box-shadow: 0 0 10px dodgerblue;
+            }
+            
+            .cart-title {
+                text-align: center;
+                color: #a84caf;
+                margin-top: 0;
+                padding-bottom: 10px;
+                border-bottom: 1px solid darkmagenta;
+            }
+            
+            .cart-item {
+                margin: 15px 0;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .cart-item input {
+                width: 300px;                 
+                padding: 10px;                 
+                font-size: 16px;               
+                border: 2px solid #954caf;     
+                border-radius: 4px;             
+            }
+            
+            .buttons {
+                gap: 10px;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            button {
+                padding: 10px 20px;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            
+            #calculate {
+                background-color: #af4c7c;
+                color: white;
+            }
+            
+            #clear {
+                background-color: #af4c7c;
+                color: white;
+            }
+            
+            input {
+                width: 80px;
+                padding: 8px;
+                border: 1px solid lightpink;
+                border-radius: 4px;
+            }
+            
+            input:focus {
+                outline: none;
+                border-color: #a54caf;
+            }
+        </style>
+    
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 5
+        </header>
+
+        <main class="cart-container">
+            <h2>Корзина товаров</h2>
+        
+            <div class="cart-items">
+                <div class="cart-item">
+                    <label for="apples">Яблоки (100р/шт):</label><br>
+                    <input type="number" id="apples" min="0" placeholder="яблочки">
+                </div>
+                
+                <div class="cart-item">
+                    <label for="pears">Груши (80р/шт):</label><br>
+                    <input type="number" id="pears" min="0" placeholder="грушииии">
+                </div>
+                
+                <div class="cart-item">
+                    <label for="oranges">Апельсины (150р/шт):</label><br>
+                    <input type="number" id="oranges" min="0" placeholder="апельсинки для вас витаминки">
+                </div>
+                
+                <div class="cart-item">
+                    <label for="melons">Дыни (300р/шт):</label><br>
+                    <input type="number" id="melons" min="0" placeholder="пердыни">
+                </div>
+                
+                <div class="cart-item">
+                    <label for="bananas">Бананы (60р/шт):</label><br>
+                    <input type="number" id="bananas" min="0" placeholder="никто не любит черные бананы">
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button id="calculate" onclick="calculateTotal()">Рассчитать</button>
+                <button id="clear" onclick="clearCart()">Очистить</button>
+            </div>
+            
+            <div id="total-price">Общая цена: 0 р</div>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+        <script>
+            function calculateTotal() {
+            let apples = parseInt(document.getElementById('apples').value) || 0;
+            let pears = parseInt(document.getElementById('pears').value) || 0;
+            let oranges = parseInt(document.getElementById('oranges').value) || 0;
+            let melons = parseInt(document.getElementById('melons').value) || 0;
+            let bananas = parseInt(document.getElementById('bananas').value) || 0;
+            
+            let total = (apples * 100) + (pears * 80) + (oranges * 150) + (melons * 300) + (bananas * 60);
+            
+            document.getElementById('total-price').textContent = `Общая цена: ${total} р`;
+            }
+
+            function clearCart() {
+                document.getElementById('apples').value = '';
+                document.getElementById('pears').value = '';
+                document.getElementById('oranges').value = '';
+                document.getElementById('melons').value = '';
+                document.getElementById('bananas').value = '';
+                document.getElementById('total-price').textContent = 'Общая цена: 0 р';
+                document.getElementById('apples').focus();
+            }
+
+
+        </script>
+
+    </body>
+</html>
