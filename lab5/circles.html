@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пенькова Полина Александровна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+         main {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.6s ease;
+            box-shadow: 0 2px 5px darkmagenta;
+        }
+
+        .hidden {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        #reset-btn {
+            position: fixed;
+            bottom: 20px;
+            padding: 10px 20px;
+            background-color: #af4c9b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #reset-btn:hover {
+            background-color: #9b4cae;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main id="circles-container"></main>
+
+    <button id="reset-btn">Восстановить круги</button>
+
+    <footer>
+        &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+    </footer>
+
+    <script>
+        const colors = [
+            '#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33F3',
+            '#33FFF3', '#FF8C33', '#8C33FF', '#33FF8C', '#FF338C'
+        ];
+
+        function createCircles() {
+            const container = document.getElementById('circles-container');
+            container.innerHTML = '';
+
+            const containerHeight = window.innerHeight;
+            const containerWidth = window.innerWidth;
+
+            colors.forEach((color, index) => {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.textContent = index + 1;
+                circle.style.backgroundColor = color;
+                circle.style.left = Math.random() * (containerWidth - 70) + 'px';
+                circle.style.top = Math.random() * (containerHeight - 70) + 'px';
+
+                circle.addEventListener('click', function() {
+                    this.classList.add('hidden');
+                });
+
+                container.appendChild(circle);
+            });
+        }
+
+        function resetCircles() {
+            const container = document.getElementById('circles-container');
+            const circles = container.querySelectorAll('.circle');
+
+            const containerHeight = window.innerHeight;
+            const containerWidth = window.innerWidth;
+
+            circles.forEach(circle => {
+                circle.classList.remove('hidden');
+                circle.style.left = Math.random() * (containerWidth - 70) + 'px';
+                circle.style.top = Math.random() * (containerHeight - 70) + 'px';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createCircles();
+            document.getElementById('reset-btn').addEventListener('click', resetCircles);
+        });
+
+        window.addEventListener('resize', createCircles);
+    </script>
+</body>
+</html>
