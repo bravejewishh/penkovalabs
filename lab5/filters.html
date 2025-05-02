@@ -18,6 +18,12 @@
                 document.getElementById('brightoutput').innerText = value;
                 document.getElementById('image').style.filter = 'brightness(' + value + ')'
             }
+
+            function contrastchange() {
+                let value = document.getElementById('contrtvalue').value + '%';
+                document.getElementById('controutput').innerText = value;
+                document.getElementById('image').style.filter = 'contrast(' + value + ')'
+            }
         </script>
      </head>
 
@@ -37,6 +43,12 @@
                 фильтр brightness:
                 <input type="range" min="0" max="500" value="100" onchange="brightchange()" id="brightvalue">
                 <span id="brightoutput"></span>
+            </div>
+
+            <div>
+                фильтр contrast:
+                <input type="range" min="0" max="500" value="100" onchange="contrastchange()" id="contrtvalue">
+                <span id="controutput"></span>
             </div>
             <div><img src="snoopy.jpg" id="image"></div>
         </main>
