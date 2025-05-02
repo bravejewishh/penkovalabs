@@ -24,6 +24,18 @@
                 document.getElementById('controutput').innerText = value;
                 document.getElementById('image').style.filter = 'contrast(' + value + ')'
             }
+
+            function grayscalechange() {
+                let value = document.getElementById('grayvalue').value + '%';
+                document.getElementById('grayoutput').innerText = value;
+                document.getElementById('image').style.filter = 'grayscale(' + value + ')'
+            }
+
+            function huerotatechange() {
+                let value = document.getElementById('huevalue').value + 'deg';
+                document.getElementById('hueoutput').innerText = value;
+                document.getElementById('image').style.filter = 'hue-rotate(' + value + ')'
+            }
         </script>
      </head>
 
@@ -49,6 +61,18 @@
                 фильтр contrast:
                 <input type="range" min="0" max="500" value="100" onchange="contrastchange()" id="contrtvalue">
                 <span id="controutput"></span>
+            </div>
+
+            <div>
+                фильтр grayscale:
+                <input type="range" min="0" max="100" value="0" onchange="grayscalechange()" id="grayvalue">
+                <span id="grayoutput"></span>
+            </div>
+
+            <div>
+                фильтр hue-rotate:
+                <input type="range" min="0" max="360" value="0" onchange="huerotatechange()" id="huevalue">
+                <span id="hueoutput"></span>
             </div>
             <div><img src="snoopy.jpg" id="image"></div>
         </main>
