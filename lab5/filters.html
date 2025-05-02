@@ -36,6 +36,24 @@
                 document.getElementById('hueoutput').innerText = value;
                 document.getElementById('image').style.filter = 'hue-rotate(' + value + ')'
             }
+
+            function invertchange() {
+                let value = document.getElementById('invertvalue').value + '%';
+                document.getElementById('invertoutput').innerText = value;
+                document.getElementById('image').style.filter = 'invert(' + value + ')'
+            }
+
+            function saturatechange() {
+                let value = document.getElementById('saturvalue').value + '%';
+                document.getElementById('saturoutput').innerText = value;
+                document.getElementById('image').style.filter = 'saturate(' + value + ')'
+            }
+
+            function sepiachange() {
+                let value = document.getElementById('sepiavalue').value + '%';
+                document.getElementById('sepiaoutput').innerText = value;
+                document.getElementById('image').style.filter = 'sepia(' + value + ')'
+            }
         </script>
      </head>
 
@@ -73,6 +91,24 @@
                 фильтр hue-rotate:
                 <input type="range" min="0" max="360" value="0" onchange="huerotatechange()" id="huevalue">
                 <span id="hueoutput"></span>
+            </div>
+
+            <div>
+                фильтр invert:
+                <input type="range" min="0" max="100" value="0" onchange="invertchange()" id="invertvalue">
+                <span id="invertoutput"></span>
+            </div>
+
+            <div>
+                фильтр saturate:
+                <input type="range" min="0" max="500" value="100" onchange="saturatechange()" id="saturvalue">
+                <span id="saturoutput"></span>
+            </div>
+
+            <div>
+                фильтр sepia:
+                <input type="range" min="0" max="100" value="0" onchange="sepiachange()" id="sepiavalue">
+                <span id="sepiaoutput"></span>
             </div>
             <div><img src="snoopy.jpg" id="image"></div>
         </main>
