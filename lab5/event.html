@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #block {
+                width: 300px;
+                height: 300px;
+                border: 2px solid darkred;
+                background-color: lightpink;
+                cursor: crosshair;
+                transition: all 0.3s ease;
+            }
+        </style>
+        <script>
+            function showcoords() {
+                let x = this.event.x;
+                let y = this.event.y;
+                let div = document.getElementById('block');
+                let message = '<b>x<\b> = ' + x + ' px<br><b>y</b> = ' + y + ' px';
+                let keyMessages = [];
+
+                if(this.event.ctrlKey) {
+                    div.style.color = 'orange';
+                    keyMessages.push('Нажата клавиша ctrl');
+                }
+                
+                if(this.event.altKey) {
+                    div.style.backgroundColor = 'purple'; 
+                    keyMessages.push('Нажата клавиша alt');
+                }
+                
+                if(this.event.shiftKey) {
+                    div.style.border = '10px yellow'; 
+                    keyMessages.push('Нажата клавиша shift');
+                }
+
+                if(keyMessages.length > 0) {
+                    message += '<br><br>' + keyMessages.join('<br>');
+                }
+
+                else {
+                    div.style.color = 'black';
+                }
+
+        
+
+                div.innerHTML = message;
+            }
+        </script>
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 5
+        </header>
+
+        <main>
+            <div id="block" onmousemove="showcoords()"></div>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
