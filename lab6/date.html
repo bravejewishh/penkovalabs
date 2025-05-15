@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            main {
+                border: 2px solid #824caf;
+                border-radius: 10px;
+                padding: 20px;
+                max-width: 500px;
+                margin: 20px auto;
+                box-shadow: 0 0 10px dodgerblue;
+            }
+        </style>
+        <script>
+            function showdate() {
+                let out = document.getElementById('current-date');
+                let today = new Date();
+                out.innerHTML = `
+                <div><b>Россия:</b> <i>${ today.toLocaleString('ru-RU') }</i></div>
+                <div><b>США:</b> <i>${ today.toLocaleString('en-US') }</i></div>
+                <div><b> Германия:</b> <i>${ today.toLocaleString('de-DE') }</i></div>
+                <div><b> Япония:</b> <i>${ today.toLocaleString('ja-JP') }</i></div>
+                <div><b> Франция:</b> <i>${ today.toLocaleString('fr-FR') }</i></div>
+                <div><b> Арабские страны:</b> <i>${ today.toLocaleString('ar-EG') }</i></div>
+                `
+            }
+        </script>
+     </head>
+
+    <body onload="showdate()">
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <main>
+           <div id="current-date"></div>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
