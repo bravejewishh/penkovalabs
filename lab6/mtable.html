@@ -17,27 +17,66 @@
                 margin: 20px auto;
                 box-shadow: 0 0 10px dodgerblue;
             }
+            .controls {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                max-width: 300px;
+                margin: 0 auto;
+                padding: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+            }
         </style>
         <script>
-            function showmutipleTable() {
+            function showMultipleTable() {
+
+                let multiplyBy = parseInt(document.getElementById('multiplyBy').value) || 7;
+                let startFrom = parseInt(document.getElementById('startFrom').value) || 1;
+                let endAt = parseInt(document.getElementById('endAt').value) || 10;
+                
                 let tbl = document.getElementById('mtable');
-                tbl.innerHTML = '<h1>таблица умножения</h1>';
-                for (i = 1; i<=10; i++) {
-                    let s = `<div>${i} * 7 = ${i*7}</div>`;
+                tbl.innerHTML = `<h1>таблица умножения на ${multiplyBy}</h1>`;
+                
+                for (let i = startFrom; i <= endAt; i++) {
+                    let s = `<div>${i} × ${multiplyBy} = ${i * multiplyBy}</div>`;
                     tbl.innerHTML += s;
                 }
             }
-            showmutipleTable();
+            window.onload = function() {
+                showMultipleTable();
+            }
         </script>
      </head>
 
-    <body onload="showmutipleTable()">
+    <body>
         <header> 
             НГТУ, ФБ, Лабораторная работа 6
         </header>
 
         <main>
             <div id="mtable"></div>
+
+            <div class="controls">
+                <div class="input-group">
+                    <label for="multiplyBy">умножить на:</label>
+                    <input type="number" id="multiplyBy" value="7" min="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="startFrom">начать с:</label>
+                    <input type="number" id="startFrom" value="1" min="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="endAt">закончить на:</label>
+                    <input type="number" id="endAt" value="10" min="1">
+                </div>
+                
+                <button onclick="showMultipleTable()">таблица</button>
+            </div>
         </main>
 
         <footer> 
