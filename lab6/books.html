@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="books.js"></script>
+        <style>
+            h1 {
+                text-align: center;
+            }
+            main {
+                border: 2px solid #824caf;
+                border-radius: 10px;
+                padding: 20px;
+                max-width: auto;
+                margin: 20px 10px 10px 10px ;
+                box-shadow: 0 0 10px dodgerblue;
+                background-color: rgb(255, 196, 242);
+            }
+
+            .bestseller {
+                background-color: #ac4bd5;
+                border-left: 4px solid #f10fc8;
+            }
+
+            .bestseller-tag {
+                display: inline-block;
+                background-color: #f10f6d;
+                color: white;
+                padding: 3px 8px;
+                border-radius: 3px;
+                font-size: 0.8em;
+                margin-left: 10px;
+                font-weight: bold;
+            }
+            
+            .out-of-stock {
+                opacity: 0.6;
+                position: relative;
+            }
+
+            .out-of-stock::after {
+                content: "Нет в наличии";
+                display: inline-block;
+                background-color: #e74c3c;
+                color: white;
+                padding: 3px 8px;
+                border-radius: 3px;
+                font-size: 0.8em;
+                margin-left: 10px;
+            }
+        </style>
+        <script>
+            function showbooks(){
+                const booklist = document.getElementById('booklist');
+                for(let i = 0; i < books.length; i++) {
+                    let bookClasses = "book";
+                    if(books[i].bestseller) bookClasses += " bestseller";
+                    if(!books[i].available) bookClasses += " out-of-stock";
+                    
+                    booklist.innerHTML += `
+                    <div class="${bookClasses}">
+                        <div>
+                            <b>${books[i].author}.</b>
+                            <i>${books[i].name}.</i>
+                            ${books[i].bestseller ? '<span class="bestseller-tag">Бестселлер</span>' : ''}
+                        </div>
+                        <div>&mdash; ${books[i].publicationyear}</div>
+                        <div class="price">Цена: ${books[i].price} ₽</div>
+                    </div>
+                    `;
+                }
+            }
+        </script>
+     </head>
+
+    <body onload="showbooks()">
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <main>
+            <h1>список книг</h1>
+            <div id="booklist"></div>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
