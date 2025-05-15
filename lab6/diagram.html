@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            #diag {
+                display: flex;
+                align-items: flex-end;
+                height: 400px;
+                gap: 5px;
+                border: 2px solid #824caf;
+                border-radius: 10px;
+                padding: 20px;
+                background-color: rgb(235, 191, 216);
+            }
+            .bar {
+                width: 100px;
+                background: blueviolet;
+                position: relative;
+
+            }
+        </style>
+        <script>
+            function showdiagram() {
+                let data = [36, 86, 55, 28, 92, 60, 41, 17, 9, 43];
+                let colors = ['#E6E6FA', '#DDA0DD', '#EE82EE', '#DA70D6', '#BA55D3', '#9400D3', '#8B008B', '#C71585', '#7B68EE', '#4682B4'];
+                let bars = document.getElementsByClassName('bar');
+                const diagheight = document.getElementById('diag').clientHeight;
+                const maxData = Math.max(...data);
+                const k = diagheight/maxData * 0.9;
+                for (let i = 0; i < data.length; i++) {
+                    bars[i].style.height = k*data[i] + 'px';
+                    bars[i].style.backgroundColor = colors[i];
+                    bars[i].innerHTML = `<span class="bar-value">${data[i]}</span>`;
+                }
+
+            }
+        </script>
+     </head>
+
+    <body onload="showdiagram()">
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <main>
+            <div id="diag">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
