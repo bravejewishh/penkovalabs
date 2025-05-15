@@ -7,13 +7,17 @@
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <link rel="icon" href="../favicon-32x32.png">
         <style>
-            main {
+            #current-date {
                 border: 2px solid #824caf;
                 border-radius: 10px;
                 padding: 20px;
                 max-width: 500px;
                 margin: 20px auto;
                 box-shadow: 0 0 10px dodgerblue;
+            }
+
+            header {
+                transition: color 0.8s ease;
             }
         </style>
         <script>
@@ -29,6 +33,40 @@
                 <div><b> Арабские страны:</b> <i>${ today.toLocaleString('ar-EG') }</i></div>
                 `
             }
+
+            function changecolor() {
+                const header = document.getElementsByTagName('header')[0];
+                const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                header.style.color = rgb;
+            }
+
+            let timernum;
+
+            function startchangecolors() {
+                changecolor();
+                timernum = setInterval(changecolor, 2000);
+                document.getElementById('start-btn').disabled = true;
+                document.getElementById('stop-btn').disabled = false;
+            }
+
+            function stopchangecolors() {
+                clearInterval(timernum);
+                document.getElementById('start-btn').disabled = false;
+                document.getElementById('stop-btn').disabled = true;
+            }
+
+            function startTimeUpdate() {
+                showdate();
+                timeTimer = setInterval(showdate, 1000);
+                document.getElementById('time-start-btn').disabled = true;
+                document.getElementById('time-stop-btn').disabled = false;
+            }
+
+            function stopTimeUpdate() {
+                clearInterval(timeTimer);
+                document.getElementById('time-start-btn').disabled = false;
+                document.getElementById('time-stop-btn').disabled = true;
+            }
         </script>
      </head>
 
@@ -39,6 +77,12 @@
 
         <main>
            <div id="current-date"></div>
+           <div>
+                <button onclick="startchangecolors()" id="start-btn">старт</button>
+                <button onclick="stopchangecolors()" disabled id="stop-btn">стоп</button>
+                <button onclick="startTimeUpdate()" id="time-start-btn">Обновлять время</button>
+                <button onclick="stopTimeUpdate()" disabled id="time-stop-btn">Остановить обновление</button>
+           </div>
         </main>
 
         <footer> 
