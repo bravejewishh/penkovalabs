@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 20px;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .positive {
+                color: green;
+                font-weight: bold;
+            }
+            .negative {
+                color: red;
+                font-weight: bold;
+            }
+            .stats {
+                margin-top: 20px;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+            }
+            button {
+                padding: 10px 15px;
+                background-color: plum;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: rgb(102, 0, 128);
+            }
+        </style>
+        <script>
+            function showStockData() {
+            
+                const dates = [
+                    '15.05.2025', '16.05.2025', '19.05.2025', '20.05.2025', '21.05.2025',
+                    '22.05.2025', '23.05.2025', '26.05.2025', '27.05.2025', '28.05.2025'
+                ];
+                const prices = [0.5584, 0.5930, 0.5970, 0.6074, 0.6038, 0.5950, 0.5960, 0.6012, 0.6286, 0.6326];
+                
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+                
+                const headerRow = document.createElement('tr');
+                ['Дата', 'Цена акции', 'Разница'].forEach(text => {
+                    const th = document.createElement('th');
+                    th.textContent = text;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+        
+                for (let i = 0; i < dates.length; i++) {
+                    const row = document.createElement('tr');
+            
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = dates[i];
+                    row.appendChild(dateCell);
+    
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = prices[i].toFixed(4);
+                    row.appendChild(priceCell);
+                    
+                    const diffCell = document.createElement('td');
+                    if (i > 0) {
+                        const diff = prices[i] - prices[i-1];
+                        diffCell.textContent = diff.toFixed(4);
+                        
+                        if (diff > 0) {
+                            diffCell.classList.add('positive');
+                        } else if (diff < 0) {
+                            diffCell.classList.add('negative');
+                        }
+                    } else {
+                        diffCell.textContent = '-';
+                    }
+                    row.appendChild(diffCell);
+                    
+                    tbody.appendChild(row);
+                }
+                table.appendChild(tbody);
+                
+                const sum = prices.reduce((acc, val) => acc + val, 0);
+                const average = sum / prices.length;
+                const max = Math.max(...prices);
+                const min = Math.min(...prices);
+                
+                const statsDiv = document.createElement('div');
+                statsDiv.className = 'stats';
+                statsDiv.innerHTML = `
+                    <p>Средняя стоимость: ${average.toFixed(4)}</p>
+                    <p>Максимальная стоимость: ${max.toFixed(4)}</p>
+                    <p>Минимальная стоимость: ${min.toFixed(4)}</p>
+                `;
+                
+                const main = document.querySelector('main');
+                main.appendChild(table);
+                main.appendChild(statsDiv);
+                
+                document.querySelector('button').style.display = 'none';
+            }
+        </script>
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+
+        <main>
+            <button onclick="showStockData()">Курс акций Россети Центр</button>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+    </body>
+</html>
