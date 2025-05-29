@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="dollar.data.js"></script>
+        <script>
+            function showExchange() {
+                //const exchange = [
+                //    78.4970, 79.6037, 79.6176, 79.6588, 79.7108,
+                //    79.7357, 79.7530, 80.3075, 80.4137, 80.7689
+               // ];
+                let button = document.querySelector('button');
+                let detailDiv = document.getElementById('detail');
+                let table = document.getElementById('dollar-table');
+                for (let i = 0; i < exchange.length; i++) {
+                    let tr = document.createElement('tr');
+                    let td = document.createElement('td');
+                    td.innerText = exchange[i];
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                }
+
+                let sum = 0;
+                for (let i = 0; i < exchange.length; i++) {
+                    sum += exchange[i];
+                }
+
+                let average = sum/exchange.length;
+                average = average.toFixed(2);
+
+                detailDiv.innerHTML = `<p>средний курс: ${average} руб.</p>`;
+
+                button.style.display = 'none';
+            }
+        </script>
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+
+        <main>
+            <button onclick="showExchange()">курс доллара</button>
+            <table border="1" id="dollar-table"></table>
+            <div id="detail"></div>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
