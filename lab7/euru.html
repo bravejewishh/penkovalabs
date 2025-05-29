@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            .exchange-info {
+                margin: 20px 0;
+                padding: 20px;
+                border: 2px solid purple;
+                border-radius: 10px;
+                background-color: white;
+                max-width: 500px;
+                font-family: Arial, sans-serif;
+            }
+            .exchange-rate {
+                font-size: 24px;
+                font-weight: bold;
+                margin: 10px 0;
+                color: #2c3e50;
+            }
+            .rate-difference {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+            .up {
+                color: #27ae60;
+            }
+            .down {
+                color: #e74c3c;
+            }
+            .date-info {
+                color: #7f8c8d;
+                font-size: 14px;
+                margin: 5px 0;
+            }
+            .source-link {
+                margin-top: 15px;
+                font-size: 12px;
+                color: #3498db;
+            }
+            button {
+                padding: 10px 15px;
+                background-color: plum;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: rgb(102, 0, 128);
+            }
+        </style>
+        <script>
+            function getEuroExchangeRate() {
+                const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const eur = data.Valute.EUR;
+                    const currentRate = eur.Value.toFixed(2);
+                    const previousRate = eur.Previous.toFixed(2);
+                    const difference = (eur.Value - eur.Previous).toFixed(2);
+                    const date = new Date(data.Date).toLocaleDateString('ru-RU');
+                    
+                    let differenceText = '';
+                    let differenceClass = '';
+                    
+                    if (difference > 0) {
+                        differenceText = `+${difference} (курс вырос)`;
+                        differenceClass = 'up';
+                    } else if (difference < 0) {
+                        differenceText = `${difference} (курс упал)`;
+                        differenceClass = 'down';
+                    } else {
+                        differenceText = '0 (без изменений)';
+                    }
+                    
+                    document.querySelector('main').innerHTML += `
+                        <div class="exchange-info">
+                            <div class="date-info">Дата запроса: ${date}</div>
+                            <div class="exchange-rate">Текущий курс евро: ${currentRate} руб.</div>
+                            <div class="date-info">Предыдущий курс: ${previousRate} руб.</div>
+                            <div class="rate-difference ${differenceClass}">Изменение: ${differenceText}</div>
+                            <div class="source-link">
+                                Источник: <a href="https://www.cbr-xml-daily.ru/" target="_blank">ЦБ РФ</a> 
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.querySelector('button').style.display = 'none';
+                })
+            }
+        </script>
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+
+        <main>
+            <button onclick="getEuroExchangeRate()">Показать курс евро</button>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+    </body>
+</html>
