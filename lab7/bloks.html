@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function addNewBlock() {
+                let newBlock = document.createElement ('div');
+                newBlock.style.backgroundColor = 'purple';
+                newBlock.style.height = '40px';
+                newBlock.style.width = '100px';
+                newBlock.style.border = '2px solid orange';
+                newBlock.style.margin = '10px';
+                newBlock.style.display = 'flex';
+
+                document.querySelector('main').appendChild(newBlock);
+            }
+        </script>
+     </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+
+        <main>
+            <button onclick="addNewBlock()">добавить блок</button>
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+    </body>
+</html>
