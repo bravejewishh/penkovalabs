@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Пенькова Полина Александровна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            async function getWeather() {
+                try {
+                    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok');
+                    const data = await response.json();
+                    
+                    const times = data.hourly.time;
+                    const temperatures = data.hourly.temperature_2m;
+                    
+                    // Получаем текущую дату в формате YYYY-MM-DD
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    const month = String(today.getMonth() + 1).padStart(2, '0');
+                    const day = String(today.getDate()).padStart(2, '0');
+                    const todayStr = `${year}-${month}-${day}`;
+                    
+                    // Ищем индексы для нужных часов
+                    let temp8, temp12, temp20;
+                    
+                    for (let i = 0; i < times.length; i++) {
+                        const timeStr = times[i];
+                        if (!timeStr.startsWith(todayStr)) continue;
+                        
+                        const hour = timeStr.split('T')[1].substring(0, 2);
+                        
+                        if (hour === '08') temp8 = temperatures[i];
+                        if (hour === '12') temp12 = temperatures[i];
+                        if (hour === '20') temp20 = temperatures[i];
+                    }
+                    
+                    // Формируем HTML
+                    const weatherHTML = `
+                        <h2>Прогноз температуры в Новосибирске на сегодня:</h2>
+                        <ul>
+                            <li>8:00 утра: ${temp8 !== undefined ? temp8 + ' °C' : 'данные недоступны'}</li>
+                            <li>12:00 дня: ${temp12 !== undefined ? temp12 + ' °C' : 'данные недоступны'}</li>
+                            <li>20:00 вечера: ${temp20 !== undefined ? temp20 + ' °C' : 'данные недоступны'}</li>
+                        </ul>
+                    `;
+                    
+                    document.getElementById('weather-data').innerHTML = weatherHTML;
+                } catch (error) {
+                    console.error('Ошибка при получении данных о погоде:', error);
+                    document.getElementById('weather-data').innerHTML = '<p>Не удалось загрузить данные о погоде. Пожалуйста, попробуйте позже.</p>';
+                }
+            }
+            
+            window.onload = getWeather;
+        </script>
+    </head>
+
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+            <hr>
+        </header>
+
+        <main>
+            <div id="weather-data">
+                <p>Загрузка данных о погоде...</p>
+            </div>
+        </main>
+    
+        <footer>
+            <hr>
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+    </body>
+</html>
