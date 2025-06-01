@@ -32,7 +32,7 @@
                 <h2>цветы</h2>
                 <ul>
                     <li v-for="(flower, id) in flowers">
-                        {{ flower }} 
+                        {{ flower }} <button @click="edit(id, flower)">?</button>
 
                     </li>
                 </ul>
@@ -67,6 +67,11 @@
 
                     decCounter() {
                         this.counter--;
+                    },
+
+                    edit(id, flower) {
+                        let newName = prompt('введите название цветка: ', flower);
+                        this.flowers[id] = newName;
                     },
                 }
             }).mount('#app');
