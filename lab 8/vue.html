@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пенькова Полина Александровна. Лабораторная 8</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        
+    </head>
+
+    <body>
+        <header> 
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+
+        <main>
+           <div id="app">
+                <h1 :title="messageRus">{{ message }}</h1>
+           </div>
+           
+        </main>
+
+        <footer> 
+            &copy; Пенькова Полина Александровна, ФБИ-34, 2 курс, 2025
+        </footer>
+
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        message: 'hello!',
+                        messageRus: 'привет!',
+                    }
+                }
+            }).mount('#app');
+        </script>
+
+    </body>
+</html>
