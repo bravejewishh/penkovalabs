@@ -31,18 +31,34 @@
                 <div>телефон: {{ user.tel }}</div>
                 <hr>
 
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h2 class="card-title">Цветы</h2>
-                        <ul class="list-group">
-                            <li v-for="(flower, id) in flowers" class="list-group-item">
-                                {{ flower }}
-                                <button @click="edit(id, flower)"><i class="bi bi-pen"></i></button>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr>
-                </div>
+                <h2>Цветы</h2>
+                <ul>
+                    <li v-for="(flower, id) in flowers">
+                    {{ flower }} <button @click="edit(id, flower)"></button>
+                    </li>
+                </ul>
+                <hr>
+
+                <h2>Цветы</h2>
+                <table>
+                    <thead>
+                    <tr>
+                    <th>Название</th>
+                    <th>Редактировать</th>
+                    </tr>
+                </thead>
+                <tr v-for="(flower, id) in flowers">
+                    <td>
+                        <span v-if="flower === null">загружается...</span>
+                        <span v-else>{{ flower }}</span>
+                    </td>
+                    <td>
+                    <button @click="edit(id, flower)" class="btn btn-primary" v-if="flower !== null"><i class="bi bi-pen"></i></button>
+                    <div class="spinner-border" role="status" v-if="flower === null"></div>
+                    </td>
+                </tr>
+                </table>
+                <hr>
                 <br>
 
                 <h2>Калькулятор</h2>
@@ -101,7 +117,7 @@
 
                     edit(id, flower) {
                         let newName = prompt('введите название цветка: ', flower);
-                        this.flowers[id] = 'сохранение....';
+                        this.flowers[id] = null;
                         setTimeout(() => {
                             this.flowers[id] = newName;
                         }, 3000);
