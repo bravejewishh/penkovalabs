@@ -31,12 +31,22 @@
                 <hr>
 
                 <h2>цветы</h2>
-                <ul>
-                    <li v-for="(flower, id) in flowers">
-                        {{ flower }} <button @click="edit(id, flower)">?</button>
-
-                    </li>
-                </ul>
+                <table class="table table-danger">
+                    <thead>
+                        <tr>
+                            <th>название</th>
+                            <th>редактировать</th>
+                        </tr>
+                    </thead>    
+                    <tr v-for="(flower, id) in flowers">
+                        <td>
+                        {{ flower }} 
+                        </td>
+                        <td>
+                            <button @click="edit(id, flower)">?</button>
+                        </td>
+                    </tr>
+                </table>
                 <br>
 
                 <h2>Калькулятор</h2>
